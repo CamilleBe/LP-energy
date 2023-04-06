@@ -21,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //Codition numéro de téléphone
-    if (!preg_match("~^\d{5}$~", $_POST['telephone'])) {
+    if (!preg_match("~^\d{10}$~", $_POST['telephone'])) {
         $errors['lenght_phone'] = "Le numéro renseigner n'existe pas";
     }
 
     //condition cgu
-    if ($_POST['cgu'] = false) {
+    if ($_POST['cgu'] == false) {
         $errors['cgu'] = "Veuillez sélectionner un champ";
     }
 
@@ -38,9 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ':status' => $_POST['status'],
                 ':logement_type' => $_POST['logement_type'],
                 ':nombre_fenêtre' => $_POST['nombre_fenêtre'],
-                ':homme' => $_POST['homme'],
-                ':femme' => $_POST['femme'],
-                ':non_definis' => $_POST['non_definis'],
+                ':genre' => $_POST['genre'],
                 ':nom' => $_POST['nom'],
                 ':prenom' => $_POST['prenom'],
                 ':adresse' => $_POST['adresse'],
@@ -52,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ':offre' => $_POST['offre']
             );
 
-            $query = $dbh->prepare('INSERT INTO window (status, logement_type, nombre_fenêtre, homme, nom, femme, non_definis, prenom, adresse, code_postal, ville, telephone, email, acceptations, offre) VALUES(:status, :logement_type, :nombre_fenêtre, :homme, :femme, :non_definis, :nom, :prenom, :adresse, :ville, :code_postal, :telephone, :email, :acceptations, :offre)');
+            $query = $dbh->prepare('INSERT INTO window (status, logement_type, nombre_fenêtre, genre, nom, prenom, adresse, code_postal, ville, telephone, email, acceptations, offre) VALUES(:status, :logement_type, :nombre_fenêtre, :homme, :femme, :non_definis, :nom, :prenom, :adresse, :ville, :code_postal, :telephone, :email, :acceptations, :offre)');
             $query->execute($query_params);
             header("location: home-page/redirectory.html");
             exit;
@@ -101,14 +99,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="owner">Propiétaire</option>
                         <option value="tenant">Locataire</option>
                     </select>
-                        <label for="logement_type"></label>
-                        <select id="logement_type" name="logement_type" required>
-                            <option value="">→ Type de logement... <sup>*</sup></option>
-                            <option value="house">Une maison</option>
-                            <option value="appartement">Un appartement</option>
-                            <option value="business premises">Locaux professionnels</option>
-                            <option value="autre">Autre</option>
-                        </select>
+                    <label for="logement_type"></label>
+                    <select id="logement_type" name="logement_type" required>
+                        <option value="">→ Type de logement... <sup>*</sup></option>
+                        <option value="house">Une maison</option>
+                        <option value="appartement">Un appartement</option>
+                        <option value="business premises">Locaux professionnels</option>
+                        <option value="autre">Autre</option>
+                    </select>
                 </div>
 
                 <div class="fl">
@@ -218,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h3>EN 2023, MA PRIME RÉNOV S’ÉTEND !</h3>
             <p>
                 Avec l'installation de panneaux solaires, vous pouvez bénéficier de <strong>plusieurs aides
-                financières</strong> de l'État pour réduire vos coûts d'installation. Depuis 2023, Ma Prime
+                    financières</strong> de l'État pour réduire vos coûts d'installation. Depuis 2023, Ma Prime
                 Renov' est étendue à <strong>tous les propriétaires</strong>, offrant un soutien financier accru pour réduire
                 votre empreinte carbone et améliorer votre confort. Vous pouvez également bénéficier de la
                 prime CEE. <strong>Remplissez notre questionnaire</strong> pour savoir si vous êtes éligible à cette prime et
