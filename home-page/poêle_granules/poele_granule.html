@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoConfort - Poêles à granulés</title>
+    <meta name="description" content="Calculez vos aides de la prime Ma prime renov' pour l'installation d'un poêle à granules. Obtenez une estimation de vos aides financières avec notre formulaire en ligne.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/poelegranules.css">
+</head>
+<body>
+
+<header>
+    <div id="title">
+        <h1>NOUVELLES AIDES 2023, INSTALLEZ VOTRE POÊLE À GRANULÉS !</h1>
+    </div>
+
+    <div id="txt-form-header">
+        <p id="container-text-header">
+            RÉPONDEZ A NOTRE <span>QUESTIONNAIRE RAPIDE</span> POUR NOUS PERMETTRE DE VOUS ACCOMPAGNER DANS VOTRE INSTALLATION DE <span>POÊLES A GRANULÉS</span><br><br>
+
+            DES AIDES <span>(JUSQU’A 3 200€)</span><br><br>
+            DES ECONOMIES <span>(JUSQU’A 70%)</span><br><br>
+            DES ENERGIES PLUS <span>DURABLE</span>
+        </p>
+        <div id="form">
+            <p>Recevez la meilleure offre pour concrétiser votre projet</p>
+            <form action="/home-page/redirectory.html" method="POST">
+                <div class="f2pl">
+                    <select id="status" name="status">
+                        <option value="">→ Vous êtes... <sup>*</sup></option>
+                        <option value="owner">Propiétaire</option>
+                        <option value="tenant">Locataire</option>
+                    </select>
+
+                    <select id="heating" name="heating">
+                        <option value="">→ Votre chauffage actuel...<sup>*</sup></option>
+                        <option value="gas">Gaz</option>
+                        <option value="fuel_oil">Fioul</option>
+                        <option value="electric">Électrique</option>
+                        <option value="wood">Bois</option>
+                        <option value="dual">Dual(électricité + gaz)</option>
+                        <option value="other_heating">Autre</option>
+                    </select>
+                </div>
+
+                <div class="fl">
+                    <label for="accommodation"></label>
+                    <select id="accommodation" name="accommodation">
+                        <option value="">→ Type de logement... <sup>*</sup></option>
+                        <option value="house">Une maison</option>
+                        <option value="appartement">Un appartement</option>
+                        <option value="business premises">Locaux professionnels</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="fl exeption">
+                    <input type="checkbox" id="male" name="male">
+                    <label for="male">Mr</label>
+
+                    <input type="checkbox" id="female" name="female">
+                    <label for="female">Mme</label>
+
+                    <input type="checkbox" id="other_sex" name="other_sex">
+                    <label for="other_sex">Non définis</label>
+                </div>
+
+                <div class="f2pl">
+                    <input type="text" id="nom" name="nom" placeholder="→ Nom *" autocomplete="nom">
+
+                    <input type="text" id="prenom" name="prenom" placeholder="→ Prénom *" autocomplete="prénom">
+                </div>
+
+                <div class="fl">
+                    <input type="text" id="adresse" name="adresse" placeholder="→ Adresse" autocomplete="adresse">
+                </div>
+
+                <div class="f2pl">
+                    <input type="text" id="ville" name="ville" placeholder="→ Ville" autocomplete="ville">
+
+                    <input type="text" id="code_postal" name="code_postal" placeholder="→ Code Postal *" autocomplete="codePostal">
+                </div>
+
+                <div class="fl">
+                    <label for="email"></label>
+                    <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email">
+                </div>
+
+                <div class="fl">
+                    <label for="telephone"></label>
+                    <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="phone">
+                </div>
+
+                <div id="fb">
+                    <div class="exeption" id="acceptations">
+                        <input type="checkbox" id="cgu" name="cgu">
+                        <label for="cgu">J'accepte les CGU et que leurs partenaires me communiquent leurs devis *</label>
+                        <br><br>
+
+                        <input type="checkbox" id="offre" name="offre">
+                        <label for="offre">J'accepte de recevoir des offres personnalisées email, téléphone et sms de EcoConfortSolution.fr ainsi que de ses partenaires</label>
+                    </div>
+                    <input type="submit" value="VALIDER" id="hbutton">
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+
+<div class="contenu">
+    <h2>Faites des économies sur vos factures d’énergie !</h2>
+    <div class="under-containt">
+        <img src="img/stove.png" alt="poêle à granulés" id="first-img">
+        <div class="txt-prime">
+            <h3>EN 2023, MA PRIME RÉNOV S’ÉTEND !</h3>
+            <p>
+                Avec l'installation de panneaux solaires, vous pouvez bénéficier de <strong>plusieurs aides
+                financières</strong> de l'État pour réduire vos coûts d'installation. Depuis 2023, Ma Prime
+                Renov' est étendue à <strong>tous les propriétaires</strong>, offrant un soutien financier accru pour réduire
+                votre empreinte carbone et améliorer votre confort. Vous pouvez également bénéficier de la
+                prime CEE. <strong>Remplissez notre questionnaire</strong> pour savoir si vous êtes éligible à cette prime et
+                transformez votre maison en un lieu de vie plus confortable et respectueux de l'environnement
+                dès maintenant.
+            </p>
+        </div>
+    </div>
+
+    <div class="under-containt">
+        <div class="txt-prime">
+            <h3>BÉNÉFICIEZ DE LA PRIME C.E.E</h3>
+            <p>
+                La prime CEE est une <strong>aide financière</strong> offerte par l'État pour encourager les particuliers à
+                adopter des comportements éco-responsables. En réalisant des travaux de rénovation énergétique
+                ou en installant des équipements performants, vous pouvez <strong>bénéficier de cette prime</strong> et faire
+                ainsi des <strong>économies</strong> sur vos factures d'énergie. <strong>Remplissez notre questionnaire</strong> pour découvrir
+                si vous êtes éligible à la prime CEE et transformez votre maison en un lieu de vie plus confortable
+                et respectueux de l'environnement.            </p>
+        </div>
+        <img src="img/pellet-stove.jpg" alt="poêle à granulés" id="green-house">
+    </div>
+    <div class="contant-button">
+        <a href="#form"><button>VÉRIFIER MON ÉLIGIBILITÉ</button></a>
+    </div>
+</div>
+
+<div class="bandeau">
+    <h2>TOUT SAVOIR SUR LES POÊLES À GRANULÉS</h2>
+</div>
+
+<div class="contenu" id="contenu2">
+    <div class="under-containt">
+        <img src="img/people-use-bio-coal.png" alt="illustration de panneaux solaires" id="illustration">
+        <div class="txt-prime">
+            <h3 id="pac">POÊLE À GRANULÉS </h3>
+            <p id="bold">
+                Un poêle à granulés est un appareil de chauffage fonctionnant avec des granulés de bois comprimés.
+                Il utilise une combustion propre et efficace pour produire de la chaleur, offrant ainsi une
+                alternative plus écologique et économique aux méthodes de chauffage traditionnelles.
+            </p>
+            <br><br>
+            <ul>
+                <li>→ <span class="green-list">Utilise des granulés de bois</span>, une source de combustible renouvelable et écologique.</li>
+                <li>→ <span class="green-list">Économique</span>, il permet de réaliser des économies sur la facture énergétique grâce à une consommation électrique réduite.</li>
+                <li>→ <span class="green-list">Stable</span>, il offre une chaleur constante et régulière, programmable selon les besoins.</li>
+                <li>→ <span class="green-list">Peu d’entretiens</span>, facile à utiliser et à entretenir, avec un nettoyage automatique du brûleur et une faible accumulation de cendres.</li>
+                <li>→ <span class="green-list">Écologique</span>, avec son émission faible en carbonne ce mode de chauffage est une option plus respectueuse de l'environnement que les poêles à bois traditionnels.
+                </li>
+                <li>→ <span class="green-list">Flexible</span>, le poêle à granulés est utilisable comme système de chauffage principal ou d'appoint, offrant ainsi une flexibilité d'utilisation.</li>
+            </ul>
+            <a href="#form"><button>OBTENIR MON POÊLE A GRANULÉS</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="bandeau">
+    <h2>DISPOSITIF DE L’ÉTAT</h2>
+    <div id="logo">
+        <img src="img/Groupprimerenov.png" alt="logo de Ma prime rénov'">
+        <img src="img/CEE-Certificat-Economie-Energie%201cee.png" alt="logo des certificats d'économies d'énergie">
+        <img src="img/phast.png" alt="logo de France renov'">
+        <img src="img/phast2.png" alt="logo de RGE eco artisan et logo de RGE QUALIBAT">
+    </div>
+    <div class="contant-button">
+        <a href="#form"><button id="no-shadow">CALCULER MES AIDES</button></a>
+    </div>
+</div>
+
+<footer>
+    <p>
+        ©2023 Tous droits réservés.| EcoConfortSolutions.com
+    </p>
+</footer>
+
+</body>
+</html>

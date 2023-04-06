@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoConfortSolution - Panneaux solaires</title>
+    <meta name="description" content="Calculez vos aides de la prime Ma prime renov' pour l'installation de panneaux solaires. Obtenez une estimation de vos aides financières avec notre formulaire en ligne.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/solar_energy.css">
+
+</head>
+<body>
+<header>
+    <div id="title">
+        <h1>NOUVELLES AIDES 2023, INSTALLEZ VOS PANNEAUX SOLAIRES !</h1>
+    </div>
+
+    <div id="txt-form-header">
+        <p id="container-text-header">
+            RÉPONDEZ A NOTRE <span>QUESTIONNAIRE RAPIDE</span> POUR NOUS PERMETTRE DE VOUS ACCOMPAGNER DANS VOTRE INSTALLATION DE VOS <span>PANNEAUX SOLAIRES</span><br><br>
+
+            DES AIDES <span>(JUSQU’A 8 500€)</span><br><br>
+            DES ECONOMIES <span>(JUSQU’A 70%)</span><br><br>
+            DES ENERGIES PLUS <span>VERTE</span>
+        </p>
+        <div id="form">
+            <p>Recevez la meilleure offre pour concrétiser votre projet</p>
+            <form action="/home-page/redirectory.html" method="POST">
+                <div class="f2pl">
+                    <select id="status" name="status">
+                        <option value="">→ Vous êtes... <sup>*</sup></option>
+                        <option value="owner">Propiétaire</option>
+                        <option value="tenant">Locataire</option>
+                    </select>
+
+                    <select id="heating" name="heating">
+                        <option value="">→ Le montant de votre facture énergétique... <sup>*</sup></option>
+                        <option value="gas">- 1 000€</option>
+                        <option value="gas">1 000€</option>
+                        <option value="fuel_oil">1 500€</option>
+                        <option value="electric">2 000€</option>
+                        <option value="wood">2 500€</option>
+                        <option value="dual">3 000€</option>
+                        <option value="other_heating">3 500€</option>
+                        <option value="other_heating">+3 500€</option>
+                    </select>
+                </div>
+
+                <div class="fl">
+                    <label for="accommodation"></label>
+                    <select id="accommodation" name="accommodation">
+                        <option value="">→ Type de logement... <sup>*</sup></option>
+                        <option value="house">Une maison</option>
+                        <option value="appartement">Un appartement</option>
+                        <option value="business premises">Locaux professionnels</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="fl exeption">
+                    <input type="checkbox" id="male" name="male">
+                    <label for="male">Mr</label>
+
+                    <input type="checkbox" id="female" name="female">
+                    <label for="female">Mme</label>
+
+                    <input type="checkbox" id="other_sex" name="other_sex">
+                    <label for="other_sex">Non identifié</label>
+                </div>
+
+                <div class="f2pl">
+                    <input type="text" id="nom" name="nom" placeholder="→ Nom *" autocomplete="nom">
+
+                    <input type="text" id="prenom" name="prenom" placeholder="→ Prénom *" autocomplete="prenom">
+                </div>
+
+                <div class="fl">
+                    <input type="text" id="adresse" name="adresse" placeholder="→ Adresse" autocomplete="adresse">
+                </div>
+
+                <div class="f2pl">
+                    <input type="text" id="ville" name="ville" placeholder="→ Ville" autocomplete="ville">
+
+                    <input type="text" id="code_postal" name="code_postal" placeholder="→ Code Postal *" autocomplete="codePostal">
+                </div>
+
+                <div class="fl">
+                    <label for="email"></label>
+                    <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email">
+                </div>
+
+                <div class="fl">
+                    <label for="telephone"></label>
+                    <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="telephone">
+                </div>
+
+                <div id="fb">
+                    <div class="exeption" id="acceptations">
+                        <input type="checkbox" id="cgu" name="cgu">
+                        <label for="cgu">J'accepte les CGU et que leurs partenaires me communiquent leurs devis <sup>*</sup></label>
+                        <br><br>
+
+                        <input type="checkbox" id="offre" name="offre">
+                        <label for="offre">J'accepte de recevoir des offres personnalisées email, téléphone et sms de EcoConfortSolution.fr ainsi que de ses partenaires</label>
+                    </div>
+                    <input type="submit" value="VALIDER" id="hbutton">
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+
+<div class="contenu">
+    <h2>Faites des économies sur vos factures d’énergie !</h2>
+    <div class="under-containt">
+        <img src="img/SolarBuilding.gif" alt="gif" id="first-image">
+
+        <div class="txt-prime">
+            <h3>EN 2023, MA PRIME RÉNOV S’ÉTEND !</h3>
+            <p>
+                Avec l'installation de panneaux solaires, vous pouvez bénéficier de <strong>plusieurs aides
+                financières</strong> de l'État pour réduire vos coûts d'installation. Depuis 2023, Ma Prime
+                Renov' est étendue à <strong>tous les propriétaires</strong>, offrant un soutien financier accru pour réduire
+                votre empreinte carbone et améliorer votre confort. Vous pouvez également bénéficier de la
+                prime CEE. <strong>Remplissez notre questionnaire</strong> pour savoir si vous êtes éligible à cette prime et
+                transformez votre maison en un lieu de vie plus confortable et respectueux de l'environnement
+                dès maintenant.
+            </p>
+        </div>
+    </div>
+
+    <div class="under-containt">
+        <div class="txt-prime">
+            <h3>UNE OPPORTUNITÉ RENTABLE GRÂCE A L’AUTO-CONSOMATION</h3>
+            <p>
+                Le principe de l'autoconsommation consiste à <strong>produire</strong> de l'électricité grâce aux panneaux
+                solaires pour <strong>sa propre consommation.</strong> Toutefois, lorsque la production excède
+                les besoins, il est possible de <strong>revendre le surplus d'électricité</strong> à
+                EDF à un tarif avantageux. Cette option permet de <strong>rentabiliser</strong> plus rapidement
+                l'installation de panneaux solaires en générant des <strong>revenus
+                supplémentaires</strong> et en limitant les coûts liés à l'achat d'électricité auprès d'EDF.
+            </p>
+        </div>
+        <img src="img/SolarPower.gif" alt="gif" id="green-house">
+    </div>
+    <div class="contant-button">
+        <a href="#form"><button>VÉRIFIER MON ÉLIGIBILITÉ</button></a>
+    </div>
+</div>
+
+<div class="bandeau">
+    <h2>TOUT SAVOIR SUR LES PANNEAUX SOLAIRES</h2>
+</div>
+
+<div class="contenu" id="contenu2">
+    <div class="under-containt">
+        <img src="img/solar.png" alt="illustration de panneaux solaires" id="illustration">
+        <div class="txt-prime">
+            <h3 id="pac">PANNEAUX SOLAIRES</h3>
+            <p id="bold">
+                Un panneau solaire est un dispositif qui convertit l'énergie lumineuse du soleil en
+                électricité utilisable, en offrant ainsi une source d'énergie économique, renouvelable
+                et respectueuse de l'environnement.
+            </p>
+            <br><br>
+            <ul>
+                <li>→ <span class="green-list">Écologique</span>, c'est une source d'énergie renouvelable et respectueuse de l'environnement qui réduit les émissions de gaz à effet de serre.</li>
+                <li>→ <span class="green-list">Économique</span>, elle permet de réaliser des économies sur la facture énergétique grâce à une consommation électrique réduite.</li>
+                <li>→ <span class="green-list">Durabilité</span>, les panneaux solaires ont une durée de vie de plus de 25 ans et nécessitent peu d'entretien.</li>
+                <li>→ <span class="green-list">Accessibilité</span>,ils peuvent être utilisés pour alimenter des zones éloignées du réseau électrique.</li>
+                <li>→ <span class="green-list">Revente de l'électricité</span>, l'excédent d'électricité produite peut être revendu à des tarifs avantageux.</li>
+                <li>→ <span class="green-list">Valorisation immobilière</span>, les propriétés équipées de panneaux solaires peuvent bénéficier d'une valorisation immobilière supplémentaire.</li>
+            </ul>
+            <a href="#form"><button>OBTENIR MES PANNEAUX SOLAIRES</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="bandeau">
+    <h2>DISPOSITIF DE L’ÉTAT</h2>
+    <div id="logo">
+        <img src="img/Groupprimerenov.png" alt="logo de Ma prime rénov'">
+        <img src="img/CEE-Certificat-Economie-Energie%201cee.png" alt="logo des certificats d'économies d'énergie">
+        <img src="img/phast.png" alt="logo de France renov'">
+        <img src="img/phast1.png" alt="logo de RGE eco artisan et logo de RGE QUALIBAT">
+    </div>
+    <div class="contant-button">
+        <a href="#form"><button id="no-shadow">CALCULER MES AIDES</button></a>
+    </div>
+</div>
+
+<footer>
+    <p>
+        ©2023 Tous droits réservés.| EcoConfortSolutions.com
+    </p>
+</footer>
+
+</body>
+</html>
