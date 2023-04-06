@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $query_params = array(
                 ':status' => $_POST['status'],
-                ':chauffage_actuel' => $_POST['chauffage_actuel'],
+                ':facture_energie' => $_POST['facture_energie'],
                 ':logement_type' => $_POST['logement_type'],
                 ':genre' => $_POST['genre'],
                 ':nom' => $_POST['nom'],
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ':offre' => $_POST['offre']
             );
 
-            $query = $dbh->prepare('INSERT INTO poele_granule(status, chauffage_actuel, logement_type, genre, nom, prenom, adresse, ville, code_postal, telephone, email, acceptations, offre) VALUES(:status, :chauffage_actuel, :logement_type,  :genre, :nom, :prenom, :adresse, :ville, :code_postal, :telephone, :email, :acceptations, :offre)');
+            $query = $dbh->prepare('INSERT INTO energie_solaire(status, facture_energie, logement_type, genre, nom, prenom, adresse, ville, code_postal, telephone, email, acceptations, offre) VALUES(:status, :facture_energie, :logement_type,  :genre, :nom, :prenom, :adresse, :ville, :code_postal, :telephone, :email, :acceptations, :offre)');
             $query->execute($query_params);
             header("location: /home-page/index.html");
             exit;
@@ -61,11 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-/*CREATE TABLE poele_granule (
+/*CREATE TABLE energie_solaire (
   id INT NOT NULL AUTO_INCREMENT,
   status VARCHAR(255),
   logement_type VARCHAR(255),
-  chauffage_actuel VARCHAR(255),
+  facture_energie VARCHAR(255),
   genre VARCHAR(255),
   nom VARCHAR(255),
   prenom VARCHAR(255),
@@ -82,33 +82,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>EcoConfort - Poêles à granulés</title>
-    <meta name="description" content="Calculez vos aides de la prime Ma prime renov' pour l'installation d'un poêle à granules. Obtenez une estimation de vos aides financières avec notre formulaire en ligne.">
+    <title>EcoConfortSolution - Panneaux solaires</title>
+    <meta name="description" content="Calculez vos aides de la prime Ma prime renov' pour l'installation de panneaux solaires. Obtenez une estimation de vos aides financières avec notre formulaire en ligne.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/poelegranules.css">
+    <link rel="stylesheet" href="css/solar_energy.css">
+
 </head>
 <body>
-
 <header>
     <div id="title">
-        <h1>NOUVELLES AIDES 2023, INSTALLEZ VOTRE POÊLE À GRANULÉS !</h1>
+        <h1>NOUVELLES AIDES 2023, INSTALLEZ VOS PANNEAUX SOLAIRES !</h1>
     </div>
 
     <div id="txt-form-header">
         <p id="container-text-header">
-            RÉPONDEZ A NOTRE <span>QUESTIONNAIRE RAPIDE</span> POUR NOUS PERMETTRE DE VOUS ACCOMPAGNER DANS VOTRE INSTALLATION DE <span>POÊLES A GRANULÉS</span><br><br>
+            RÉPONDEZ A NOTRE <span>QUESTIONNAIRE RAPIDE</span> POUR NOUS PERMETTRE DE VOUS ACCOMPAGNER DANS VOTRE INSTALLATION DE VOS <span>PANNEAUX SOLAIRES</span><br><br>
 
-            DES AIDES <span>(JUSQU’A 3 200€)</span><br><br>
+            DES AIDES <span>(JUSQU’A 8 500€)</span><br><br>
             DES ECONOMIES <span>(JUSQU’A 70%)</span><br><br>
-            DES ENERGIES PLUS <span>DURABLE</span>
+            DES ENERGIES PLUS <span>VERTE</span>
         </p>
         <div id="form">
             <p>Recevez la meilleure offre pour concrétiser votre projet</p>
-            <form action="poele_granule.php" method="POST">
+            <form action="solar_energy.php" method="POST">
                 <div class="f2pl">
                     <select id="status" name="status" required>
                         <option value="">→ Vous êtes... <sup>*</sup></option>
@@ -116,14 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="tenant">Locataire</option>
                     </select>
 
-                    <select id="heating" name="chauffage_actuel" required>
-                        <option value="">→ Votre chauffage actuel...<sup>*</sup></option>
-                        <option value="gas">Gaz</option>
-                        <option value="fuel_oil">Fioul</option>
-                        <option value="electric">Électrique</option>
-                        <option value="wood">Bois</option>
-                        <option value="dual">Dual(électricité + gaz)</option>
-                        <option value="other_heating">Autre</option>
+                    <select id="facture_energie" name="facture_energie" required>
+                        <option value="">→ Le montant de votre facture énergétique... <sup>*</sup></option>
+                        <option value="gas">- 1 000€</option>
+                        <option value="gas">1 000€</option>
+                        <option value="fuel_oil">1 500€</option>
+                        <option value="electric">2 000€</option>
+                        <option value="wood">2 500€</option>
+                        <option value="dual">3 000€</option>
+                        <option value="other_heating">3 500€</option>
+                        <option value="other_heating">+3 500€</option>
                     </select>
                 </div>
 
@@ -139,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <div class="fl exeption">
-                    <label for="genre">Genre : </label required required>
+                    <label for="genre">Genre : </label required>
                     <input type="radio" id="homme" name="genre" value="homme">
                     <label for="homme">Homme</label>
 
@@ -153,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="f2pl">
                     <input type="text" id="nom" name="nom" placeholder="→ Nom *" autocomplete="nom" required>
 
-                    <input type="text" id="prenom" name="prenom" placeholder="→ Prénom *" autocomplete="prénom" required>
+                    <input type="text" id="prenom" name="prenom" placeholder="→ Prénom *" autocomplete="prenom" required>
                 </div>
 
                 <div class="fl">
@@ -174,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="fl">
                     <label for="email"></label>
-                    <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email"required>
+                    <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email" required>
                 </div>
 
                 <div class="fl">
@@ -185,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="fl">
                     <label for="telephone"></label>
-                    <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="phone"required>
+                    <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="telephone" required>
                 </div>
 
                 <div class="fl">
@@ -197,9 +199,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div id="fb">
                     <div class="exeption" id="acceptations">
                         <input type="checkbox" id="cgu" name="cgu" required>
-                        <label for="cgu">J'accepte les CGU et que leurs partenaires me communiquent leurs devis *</label>
+                        <label for="cgu">J'accepte les CGU et que leurs partenaires me communiquent leurs devis <sup>*</sup></label>
 
-                        <div class="fl">
+                        <div class="fb">
                             <?php if (isset($errors['cgu'])) { ?>
                                 <p id="error3"><?php echo $errors['cgu']; ?></p>
                             <?php } ?>
@@ -220,7 +222,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="contenu">
     <h2>Faites des économies sur vos factures d’énergie !</h2>
     <div class="under-containt">
-        <img src="img/stove.png" alt="poêle à granulés" id="first-img">
+        <img src="img/SolarBuilding.gif" alt="gif" id="first-image">
+
         <div class="txt-prime">
             <h3>EN 2023, MA PRIME RÉNOV S’ÉTEND !</h3>
             <p>
@@ -237,16 +240,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="under-containt">
         <div class="txt-prime">
-            <h3>BÉNÉFICIEZ DE LA PRIME C.E.E</h3>
+            <h3>UNE OPPORTUNITÉ RENTABLE GRÂCE A L’AUTO-CONSOMATION</h3>
             <p>
-                La prime CEE est une <strong>aide financière</strong> offerte par l'État pour encourager les particuliers à
-                adopter des comportements éco-responsables. En réalisant des travaux de rénovation énergétique
-                ou en installant des équipements performants, vous pouvez <strong>bénéficier de cette prime</strong> et faire
-                ainsi des <strong>économies</strong> sur vos factures d'énergie. <strong>Remplissez notre questionnaire</strong> pour découvrir
-                si vous êtes éligible à la prime CEE et transformez votre maison en un lieu de vie plus confortable
-                et respectueux de l'environnement.            </p>
+                Le principe de l'autoconsommation consiste à <strong>produire</strong> de l'électricité grâce aux panneaux
+                solaires pour <strong>sa propre consommation.</strong> Toutefois, lorsque la production excède
+                les besoins, il est possible de <strong>revendre le surplus d'électricité</strong> à
+                EDF à un tarif avantageux. Cette option permet de <strong>rentabiliser</strong> plus rapidement
+                l'installation de panneaux solaires en générant des <strong>revenus
+                supplémentaires</strong> et en limitant les coûts liés à l'achat d'électricité auprès d'EDF.
+            </p>
         </div>
-        <img src="img/pellet-stove.jpg" alt="poêle à granulés" id="green-house">
+        <img src="img/SolarPower.gif" alt="gif" id="green-house">
     </div>
     <div class="contant-button">
         <a href="#form"><button>VÉRIFIER MON ÉLIGIBILITÉ</button></a>
@@ -254,30 +258,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <div class="bandeau">
-    <h2>TOUT SAVOIR SUR LES POÊLES À GRANULÉS</h2>
+    <h2>TOUT SAVOIR SUR LES PANNEAUX SOLAIRES</h2>
 </div>
 
 <div class="contenu" id="contenu2">
     <div class="under-containt">
-        <img src="img/people-use-bio-coal.png" alt="illustration de panneaux solaires" id="illustration">
+        <img src="img/solar.png" alt="illustration de panneaux solaires" id="illustration">
         <div class="txt-prime">
-            <h3 id="pac">POÊLE À GRANULÉS </h3>
+            <h3 id="pac">PANNEAUX SOLAIRES</h3>
             <p id="bold">
-                Un poêle à granulés est un appareil de chauffage fonctionnant avec des granulés de bois comprimés.
-                Il utilise une combustion propre et efficace pour produire de la chaleur, offrant ainsi une
-                alternative plus écologique et économique aux méthodes de chauffage traditionnelles.
+                Un panneau solaire est un dispositif qui convertit l'énergie lumineuse du soleil en
+                électricité utilisable, en offrant ainsi une source d'énergie économique, renouvelable
+                et respectueuse de l'environnement.
             </p>
             <br><br>
             <ul>
-                <li>→ <span class="green-list">Utilise des granulés de bois</span>, une source de combustible renouvelable et écologique.</li>
-                <li>→ <span class="green-list">Économique</span>, il permet de réaliser des économies sur la facture énergétique grâce à une consommation électrique réduite.</li>
-                <li>→ <span class="green-list">Stable</span>, il offre une chaleur constante et régulière, programmable selon les besoins.</li>
-                <li>→ <span class="green-list">Peu d’entretiens</span>, facile à utiliser et à entretenir, avec un nettoyage automatique du brûleur et une faible accumulation de cendres.</li>
-                <li>→ <span class="green-list">Écologique</span>, avec son émission faible en carbonne ce mode de chauffage est une option plus respectueuse de l'environnement que les poêles à bois traditionnels.
-                </li>
-                <li>→ <span class="green-list">Flexible</span>, le poêle à granulés est utilisable comme système de chauffage principal ou d'appoint, offrant ainsi une flexibilité d'utilisation.</li>
+                <li>→ <span class="green-list">Écologique</span>, c'est une source d'énergie renouvelable et respectueuse de l'environnement qui réduit les émissions de gaz à effet de serre.</li>
+                <li>→ <span class="green-list">Économique</span>, elle permet de réaliser des économies sur la facture énergétique grâce à une consommation électrique réduite.</li>
+                <li>→ <span class="green-list">Durabilité</span>, les panneaux solaires ont une durée de vie de plus de 25 ans et nécessitent peu d'entretien.</li>
+                <li>→ <span class="green-list">Accessibilité</span>,ils peuvent être utilisés pour alimenter des zones éloignées du réseau électrique.</li>
+                <li>→ <span class="green-list">Revente de l'électricité</span>, l'excédent d'électricité produite peut être revendu à des tarifs avantageux.</li>
+                <li>→ <span class="green-list">Valorisation immobilière</span>, les propriétés équipées de panneaux solaires peuvent bénéficier d'une valorisation immobilière supplémentaire.</li>
             </ul>
-            <a href="#form"><button>OBTENIR MON POÊLE A GRANULÉS</button></a>
+            <a href="#form"><button>OBTENIR MES PANNEAUX SOLAIRES</button></a>
         </div>
     </div>
 </div>
@@ -288,7 +291,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <img src="img/Groupprimerenov.png" alt="logo de Ma prime rénov'">
         <img src="img/CEE-Certificat-Economie-Energie%201cee.png" alt="logo des certificats d'économies d'énergie">
         <img src="img/phast.png" alt="logo de France renov'">
-        <img src="img/phast2.png" alt="logo de RGE eco artisan et logo de RGE QUALIBAT">
+        <img src="img/phast1.png" alt="logo de RGE eco artisan et logo de RGE QUALIBAT">
     </div>
     <div class="contant-button">
         <a href="#form"><button id="no-shadow">CALCULER MES AIDES</button></a>
