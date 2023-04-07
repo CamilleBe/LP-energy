@@ -25,10 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['lenght_phone'] = "Le numéro renseigner n'existe pas";
     }
 
-
-
-
-
     if (empty($errors)) {
         try {
 
@@ -100,7 +96,7 @@ $email = $_POST['email'] ?? "";
             UNE CONSOMATION <span>RÉDUITE</span>
         </p>
         <div id="form">
-            <p>Recevez la meilleure offre pour concrétiser votre projet</p>
+            <p id="titre-form">Recevez la meilleure offre pour concrétiser votre projet</p>
             <form action="window.php" method="POST">
                 <div class="f2pl">
                     <select id="status" name="status" required>
@@ -167,21 +163,21 @@ $email = $_POST['email'] ?? "";
                     <input type="text" id="code_postal" name="code_postal" placeholder="→ Code Postal *" autocomplete="codePostal" value="<?php echo $_POST['code_postal'] ?? ''; ?>" required>
                 </div>
 
-                <div class="fl">
+                <div class="fl-error">
                     <?php if (isset($errors['lenght_postal_code'])) { ?>
                         <p id="error1"><?php echo $errors['lenght_postal_code']; ?></p>
                     <?php } ?>
                 </div>
 
 
-                <div class="2fl">
+                <div class="fl">
                     <label for="email"></label>
                     <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email" value="<?php echo $_POST['email'] ?? ''; ?>" required>
                 </div>
 
-                <div class="fl">
+                <div class="fl-error">
                     <?php if (isset($errors['preg_email'])) { ?>
-                        <p id="error1"><?php echo $errors['preg_email']; ?></p>
+                        <p id="error2"><?php echo $errors['preg_email']; ?></p>
                     <?php } ?>
                 </div>
 
@@ -190,9 +186,9 @@ $email = $_POST['email'] ?? "";
                     <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="phone" value="<?php echo $_POST['telephone'] ?? ''; ?>" required>
                 </div>
 
-                <div class="fl">
+                <div class="fl-error">
                     <?php if (isset($errors['lenght_phone'])) { ?>
-                        <p id="error2"><?php echo $errors['lenght_phone']; ?></p>
+                        <p id="error3"><?php echo $errors['lenght_phone']; ?></p>
                     <?php } ?>
                 </div>
 

@@ -16,6 +16,22 @@ h3 {
     color: #4BB559;
 }
 
+/*erreur*/
+#error2, #error1, #error3 {
+    color: white;
+    font-weight: normal;
+    margin-top: 3px;
+    margin-left: 15px;
+    padding: 0;
+    font-size: 10px;
+}
+
+#error1 {
+    margin-left: 55%;
+}
+
+
+
 /*HEADER*/
 header {
     background-image: url("/renovation/img/header-background.png");
@@ -68,7 +84,7 @@ header span {
     padding: 30px;
 }
 
-#form p{
+#titre-form {
     font-size: 20px;
 }
 
@@ -308,7 +324,7 @@ footer {
         flex-wrap: wrap;
     }
 
-    #form p {
+    #titre-form {
         font-size: 16px;
     }
 
@@ -380,14 +396,13 @@ footer {
         width:80%;
     }
 
-    #txt-form-header p {
+    #container-text-header{
+        padding-right: 0;
         color: black;
         width:80%;
         text-align: center;
-    }
+        margin: auto;
 
-    #container-text-header{
-        padding-right: 0;
     }
 
     #form {
@@ -396,8 +411,6 @@ footer {
 
     #form p {
         color: white;
-        text-align: center;
-        margin: auto;
     }
 
     #txt-form-header span {
@@ -421,6 +434,9 @@ footer {
 
     .fl {
         margin-bottom: 0px;
+    }
+    #error1 {
+        margin-left: 0px;
     }
 }
 
