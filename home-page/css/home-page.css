@@ -43,7 +43,7 @@ nav img {
 
 /*HEADER*/
 header {
-    background-image: url("/img/headerimg.png");
+    background-image: url("headerimg.png");
     background-repeat: no-repeat;
     /*background-position: right;*/
     background-size: cover;
