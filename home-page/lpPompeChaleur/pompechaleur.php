@@ -24,11 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors['lenght_phone'] = "Le numéro renseigner n'existe pas";
   }
 
-  //condition cgu
-  if ($_POST['cgu'] == false) {
-    $errors['cgu'] = "Veuillez sélectionner un champ";
-  }
-
 
   if (empty($errors)) {
     try {
@@ -45,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           ':code_postal' => $_POST['code_postal'],
           ':telephone' => $_POST['telephone'],
           ':email' => $_POST['email'],
-          ':acceptations' => $_POST['acceptations'],
-          ':offre' => $_POST['offre']
+          ':acceptations' => isset($_POST['acceptations']) ? 0 : 1,
+          ':offre' => isset($_POST['offre']) ? 1 : 0
       );
 
       $query = $dbh->prepare('INSERT INTO pompe_chaleur(status, chauffage_actuel, logement_type, genre, nom, prenom, adresse, ville, code_postal, telephone, email, acceptations, offre) VALUES(:status, :chauffage_actuel, :logement_type,  :genre, :nom, :prenom, :adresse, :ville, :code_postal, :telephone, :email, :acceptations, :offre)');
       $query->execute($query_params);
-      header("location: /home-page/index.html");
+      header("location: ../redirectory.html");
       exit;
 
     } catch (PDOException $e) {
@@ -108,23 +103,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         DES ENERGIES PLUS <span>VERTE</span>
       </p>
       <div id="form">
-        <p>Recevez la meilleure offre pour concrétiser votre projet</p>
+      <p id="titre-form">Recevez la meilleure offre pour concrétiser votre projet</p>
         <form action="pompechaleur.php" method="POST">
           <div class="f2pl">
             <select id="status" name="status" required>
               <option value="">→ Vous êtes... <sup>*</sup></option>
-              <option value="owner">Propiétaire</option>
-              <option value="tenant">Locataire</option>
+              <option value="proprietaire" <?php if($_POST['status'] == 'proprietaire') echo 'selected'; ?>>Propiétaire</option>
+              <option value="locataire" <?php if($_POST['status'] == 'locataire') echo 'selected'; ?>>Locataire</option>
             </select>
 
             <select id="heating" name="chauffage_actuel" required>
               <option value="">→ Votre chauffage actuel... <sup>*</sup></option>
-              <option value="gas">Gaz</option>
-              <option value="fuel_oil">Fioul</option>
-              <option value="electric">Électrique</option>
-              <option value="wood">Bois</option>
-              <option value="dual">Dual(électricité + gaz)</option>
-              <option value="other_heating">Autre</option>
+              <option value="gas" <?php if($_POST['chauffage_actuel'] == 'gas') echo 'selected'; ?>>Gaz</option>
+              <option value="fioul" <?php if($_POST['chauffage_actuel'] == 'fioul') echo 'selected'; ?>>Fioul</option>
+              <option value="electrique" <?php if($_POST['chauffage_actuel'] == 'electrique') echo 'selected'; ?>>Électrique</option>
+              <option value="bois" <?php if($_POST['chauffage_actuel'] == 'bois') echo 'selected'; ?>>Bois</option>
+              <option value="dual" <?php if($_POST['chauffage_actuel'] == 'dual') echo 'selected'; ?>>Dual(électricité + gaz)</option>
+              <option value="autre_chauffage" <?php if($_POST['chauffage_actuel'] == 'autre_chauffage') echo 'selected'; ?>>Autre</option>
             </select>
           </div>
 
@@ -132,84 +127,79 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="logement_type"></label>
             <select id="accommodation" name="logement_type" required>
               <option value="">→ Type de logement... <sup>*</sup></option>
-              <option value="house">Une maison</option>
-              <option value="appartement">Un appartement</option>
-              <option value="business premises">Locaux professionnels</option>
-              <option value="autre">Autre</option>
+              <option value="maison" <?php if($_POST['logement_type'] == 'maison') echo 'selected'; ?>>Une maison</option>
+              <option value="appartement" <?php if($_POST['logement_type'] == 'appartement') echo 'selected'; ?>>Un appartement</option>
+              <option value="locaux_professionnels"  <?php if($_POST['logement_type'] == 'locaux_professionnels') echo 'selected'; ?>>Locaux professionnels</option>
+              <option value="autre" <?php if($_POST['logement_type'] == 'autre') echo 'selected'; ?>>Autre</option>
             </select>
           </div>
 
           <div class="fl exeption">
-            <label for="genre">Genre : </label required >
-            <input type="radio" id="homme" name="genre" value="homme">
-            <label for="homme">Homme</label>
+                    <label for="genre">Genre : </label required>
+                    <input type="radio" id="homme" name="genre" value="homme" <?php if ($_POST['genre'] == 'homme') { echo 'checked'; } ?>>
+                    <label for="homme">Homme</label>
 
-            <input type="radio" id="femme" name="genre" value="femme">
-            <label for="genre">Femme</label>
+                    <input type="radio" id="femme" name="genre" value="femme" <?php if ($_POST['genre'] == 'femme') { echo 'checked'; } ?>>
+                    <label for="femme">Femme</label>
 
-            <input type="radio" id="non-defini" name="genre" value="non-defini">
-            <label for="genre">Non défini</label>
-          </div>
+                    <input type="radio" id="non-defini" name="genre" value="non-defini" <?php if ($_POST['genre'] == 'non-defini') { echo 'checked'; } ?>>
+                    <label for="non-defini">Non défini</label>
+                </div>
 
-          <div class="f2pl">
-            <input type="text" id="nom" name="nom" placeholder="→ Nom *" autocomplete="nom" required>
 
-            <input type="text" id="prenom" name="prenom" placeholder="→ Prénom *" autocomplete="prenom" required>
-          </div>
+                <div class="f2pl">
+                    <input type="text" id="nom" name="nom" placeholder="→ Nom *" autocomplete="nom" value="<?php echo $nom; ?>" required>
 
-          <div class="fl">
-            <input type="text" id="adresse" name="adresse" placeholder="→ Adresse" autocomplete="adresse">
-          </div>
+                    <input type="text" id="prenom" name="prenom" placeholder="→ Prénom *" autocomplete="prenom" value="<?php echo $_POST['prenom'] ?? ''; ?>" required>
+                </div>
 
-          <div class="f2pl">
-            <input type="text" id="ville" name="ville" placeholder="→ Ville" autocomplete="ville">
+                <div class="fl">
+                    <input type="text" id="adresse" name="adresse" placeholder="→ Adresse" autocomplete="adresse" value="<?php echo $_POST['adresse'] ?? ''; ?>">
+                </div>
 
-            <input type="text" id="code_postal" name="code_postal" placeholder="→ codePostal *" utocomplete="codePostal" required>
-          </div>
+                <div class="f2pl">
+                    <input type="text" id="ville" name="ville" placeholder="→ Ville" autocomplete="ville" value="<?php echo $_POST['ville'] ?? ''; ?>">
 
-          <div class="fl">
-            <?php if (isset($errors['lenght_code_postal'])) { ?>
-              <p id="error1"><?php echo $errors['lenght_postal_code']; ?></p>
-            <?php } ?>
-          </div>
+                    <input type="text" id="code_postal" name="code_postal" placeholder="→ Code Postal *" autocomplete="codePostal" value="<?php echo $_POST['code_postal'] ?? ''; ?>" required>
+                </div>
 
-          <div class="fl">
-            <label for="email"></label>
-            <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email" required>
-          </div>
+                <div class="fl-error">
+                    <?php if (isset($errors['lenght_postal_code'])) { ?>
+                        <p id="error1"><?php echo $errors['lenght_postal_code']; ?></p>
+                    <?php } ?>
+                </div>
 
-          <div class="fl">
-            <?php if (isset($errors['preg_email'])) { ?>
-              <p id="error1"><?php echo $errors['preg_email']; ?></p>
-            <?php } ?>
-          </div>
 
-          <div class="fl">
-            <label for="telephone"></label>
-            <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="telephone" required>
-          </div>
+                <div class="fl">
+                    <label for="email"></label>
+                    <input type="text" id="email" name="email" placeholder="→ Adresse e-mail *" autocomplete="email" value="<?php echo $_POST['email'] ?? ''; ?>" required>
+                </div>
 
-          <div class="fl">
-            <?php if (isset($errors['lenght_phone'])) { ?>
-              <p id="error2"><?php echo $errors['lenght_phone']; ?></p>
-            <?php } ?>
-          </div>
+                <div class="fl-error">
+                    <?php if (isset($errors['preg_email'])) { ?>
+                        <p id="error2"><?php echo $errors['preg_email']; ?></p>
+                    <?php } ?>
+                </div>
 
-          <div id="fb">
-            <div class="exeption" id="acceptations">
-              <input type="checkbox" id="cgu" name="cgu" required>
-              <label for="cgu">J'accepte les CGU et que leurs partenaires me communiquent leurs devis *</label>
+                <div class="fl">
+                    <label for="telephone"></label>
+                    <input type="text" id="telephone" name="telephone" placeholder="→ Numéro de téléphone *" autocomplete="phone" value="<?php echo $_POST['telephone'] ?? ''; ?>" required>
+                </div>
 
-              <div class="fl">
-                <?php if (isset($errors['cgu'])) { ?>
-                  <p id="error3"><?php echo $errors['cgu']; ?></p>
-                <?php } ?>
-              </div>
+                <div class="fl-error">
+                    <?php if (isset($errors['lenght_phone'])) { ?>
+                        <p id="error3"><?php echo $errors['lenght_phone']; ?></p>
+                    <?php } ?>
+                </div>
 
-              <br><br>
+                <div id="fb">
+                    <div class="exeption" id="acceptations">
+                        <input type="checkbox" id="cgu" name="cgu" <?php if(isset($_POST['offre'])) echo "checked"; ?> required>
+                        <label for="cgu">J'accepte les CGU et que leurs partenaires me communiquent leurs devis *</label>
+                        <br><br>
 
-              <input type="checkbox" id="offre" name="offre">
-              <label for="offre">J'accepte de recevoir des offres personnalisées email, téléphone et sms de EcoConfortSolution.fr ainsi que de ses partenaires</label>
+                        <input type="checkbox" id="offre" name="offre" <?php if(isset($_POST['offre'])) echo "checked"; ?>>
+                        <label for="offre">J'accepte de recevoir des offres personnalisées email, téléphone et sms de EcoConfortSolution.fr ainsi que de ses partenaires</label>
             </div>
               <input type="submit" value="VALIDER" id="hinput">
           </div>
