@@ -56,6 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 
+$genre = $_POST['genre'] ?? "";
+$nom = $_POST['nom'] ?? "";
+$prenom = $_POST['prenom'] ?? "";
+$adresse = $_POST['adresse'] ?? "";
+$ville = $_POST['ville'] ?? "";
+$code_postal = $_POST['code_postal'] ?? "";
+$telephone = $_POST['telephone'] ?? "";
+$email = $_POST['email'] ?? "";
+
 /*CREATE TABLE pompe_chaleur (
   id INT NOT NULL AUTO_INCREMENT,
   status VARCHAR(255),
