@@ -16,6 +16,20 @@ h3 {
     color: #4BB559;
 }
 
+/*erreur*/
+#error2, #error1, #error3 {
+    color: white;
+    font-weight: normal;
+    margin-top: 3px;
+    padding: 0;
+    font-size: 10px;
+}
+
+#error1 {
+    margin-left: 55%;
+}
+
+
 /*HEADER*/
 header {
     background-image: url("/poêle_granules/img/background.png");
@@ -68,8 +82,17 @@ header span {
     padding: 30px;
 }
 
-#form p{
+#titre-form {
     font-size: 20px;
+}
+
+.fl, .fl-error {
+    width: 95%;
+    margin: auto;
+}
+
+.fl {
+    margin-top: 30px;
 }
 
 .f2pl {
@@ -79,12 +102,6 @@ header span {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
-}
-
-.fl {
-    width: 95%;
-    margin: auto;
     margin-top: 30px;
 }
 
@@ -319,7 +336,7 @@ footer {
         flex-wrap: wrap;
     }
 
-    #form p {
+    #titre-form {
         font-size: 16px;
     }
 
@@ -391,28 +408,27 @@ footer {
         width:80%;
     }
 
-    #txt-form-header p {
+    /*#txt-form-header p {
         color: black;
         width:80%;
         text-align: center;
-    }
-
-    #container-text-header{
-        padding-right: 0;
-    }
+    }*/
 
     #form {
         width: 80%;
-    }
-
-    #form p {
         color: white;
-        text-align: center;
-        margin: auto;
+
     }
 
     #txt-form-header span {
         color: #4BB559;
+    }
+
+    #container-text-header{
+        padding-right: 0;
+        color: black;
+        width:80%;
+        text-align: center;
     }
 }
 
@@ -432,6 +448,9 @@ footer {
 
     .fl {
         margin-bottom: 0px;
+    }
+    #error1 {
+        margin-left: 0px;
     }
 }
 
