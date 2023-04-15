@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['lenght_phone'] = "Le numéro renseigner n'existe pas";
     }
 
-
     if (empty($errors)) {
         try {
 
@@ -65,6 +64,7 @@ $code_postal = $_POST['code_postal'] ?? "";
 $telephone = $_POST['telephone'] ?? "";
 $email = $_POST['email'] ?? "";
 
+
 /*CREATE TABLE poele_granule (
   id INT NOT NULL AUTO_INCREMENT,
   status VARCHAR(255),
@@ -88,10 +88,30 @@ $email = $_POST['email'] ?? "";
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>EcoConfort - Poêles à granulés</title>
+    <meta name="description" content="Calculez vos aides de la prime Ma prime renov' pour l'installation d'un poêle à granules. Obtenez une estimation de vos aides financières avec notre formulaire en ligne.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/poelegranules.css">
+</head>
+<body>
+
+<header>
+    <div id="title">
         <h1>NOUVELLES AIDES 2023, INSTALLEZ VOTRE POÊLE À GRANULÉS !</h1>
+    </div>
+
+    <div id="txt-form-header">
+        <p id="container-text-header">
+            RÉPONDEZ A NOTRE <span>QUESTIONNAIRE RAPIDE</span> POUR NOUS PERMETTRE DE VOUS ACCOMPAGNER DANS VOTRE INSTALLATION DE <span>POÊLES A GRANULÉS</span><br><br>
+
+            DES AIDES <span>(JUSQU’A 3 200€)</span><br><br>
+            DES ECONOMIES <span>(JUSQU’A 70%)</span><br><br>
+            DES ENERGIES PLUS <span>DURABLE</span>
         </p>
         <div id="form">
-        <p id="titre-form">Recevez la meilleure offre pour concrétiser votre projet</p>
+            <p id="titre-form">Recevez la meilleure offre pour concrétiser votre projet</p>
             <form action="poele_granule.php" method="POST">
                 <div class="f2pl">
                     <select id="status" name="status" required>
@@ -101,28 +121,28 @@ $email = $_POST['email'] ?? "";
                     </select>
 
                     <select id="heating" name="chauffage_actuel" required>
-                      <option value="">→ Votre chauffage actuel... <sup>*</sup></option>
-                      <option value="gas" <?php if($_POST['chauffage_actuel'] == 'gas') echo 'selected'; ?>>Gaz</option>
-                      <option value="fioul" <?php if($_POST['chauffage_actuel'] == 'fioul') echo 'selected'; ?>>Fioul</option>
-                      <option value="electrique" <?php if($_POST['chauffage_actuel'] == 'electrique') echo 'selected'; ?>>Électrique</option>
-                      <option value="bois" <?php if($_POST['chauffage_actuel'] == 'bois') echo 'selected'; ?>>Bois</option>
-                      <option value="dual" <?php if($_POST['chauffage_actuel'] == 'dual') echo 'selected'; ?>>Dual(électricité + gaz)</option>
-                      <option value="autre_chauffage" <?php if($_POST['chauffage_actuel'] == 'autre_chauffage') echo 'selected'; ?>>Autre</option>
+                        <option value="">→ Votre chauffage actuel... <sup>*</sup></option>
+                        <option value="gas" <?php if($_POST['chauffage_actuel'] == 'gas') echo 'selected'; ?>>Gaz</option>
+                        <option value="fioul" <?php if($_POST['chauffage_actuel'] == 'fioul') echo 'selected'; ?>>Fioul</option>
+                        <option value="electrique" <?php if($_POST['chauffage_actuel'] == 'electrique') echo 'selected'; ?>>Électrique</option>
+                        <option value="bois" <?php if($_POST['chauffage_actuel'] == 'bois') echo 'selected'; ?>>Bois</option>
+                        <option value="dual" <?php if($_POST['chauffage_actuel'] == 'dual') echo 'selected'; ?>>Dual(électricité + gaz)</option>
+                        <option value="autre_chauffage" <?php if($_POST['chauffage_actuel'] == 'autre_chauffage') echo 'selected'; ?>>Autre</option>
                     </select>
                 </div>
 
-          <div class="fl">
-            <label for="logement_type"></label>
-            <select id="accommodation" name="logement_type" required>
-              <option value="">→ Type de logement... <sup>*</sup></option>
-              <option value="maison" <?php if($_POST['logement_type'] == 'maison') echo 'selected'; ?>>Une maison</option>
-              <option value="appartement" <?php if($_POST['logement_type'] == 'appartement') echo 'selected'; ?>>Un appartement</option>
-              <option value="locaux_professionnels"  <?php if($_POST['logement_type'] == 'locaux_professionnels') echo 'selected'; ?>>Locaux professionnels</option>
-              <option value="autre" <?php if($_POST['logement_type'] == 'autre') echo 'selected'; ?>>Autre</option>
-            </select>
-          </div>
+                <div class="fl">
+                    <label for="logement_type"></label>
+                    <select id="logement_type" name="logement_type" required>
+                        <option value="">→ Type de logement... <sup>*</sup></option>
+                        <option value="maison" <?php if($_POST['logement_type'] == 'maison') echo 'selected'; ?>>Une maison</option>
+                        <option value="appartement" <?php if($_POST['logement_type'] == 'appartement') echo 'selected'; ?>>Un appartement</option>
+                        <option value="locaux_professionnels"  <?php if($_POST['logement_type'] == 'locaux_professionnels') echo 'selected'; ?>>Locaux professionnels</option>
+                        <option value="autre" <?php if($_POST['logement_type'] == 'autre') echo 'selected'; ?>>Autre</option>
+                    </select>
+                </div>
 
-          <div class="fl exeption">
+                <div class="fl exeption">
                     <label for="genre">Genre : </label required>
                     <input type="radio" id="homme" name="genre" value="homme" <?php if ($_POST['genre'] == 'homme') { echo 'checked'; } ?>>
                     <label for="homme">Homme</label>
@@ -188,11 +208,14 @@ $email = $_POST['email'] ?? "";
 
                         <input type="checkbox" id="offre" name="offre" <?php if(isset($_POST['offre'])) echo "checked"; ?>>
                         <label for="offre">J'accepte de recevoir des offres personnalisées email, téléphone et sms de EcoConfortSolution.fr ainsi que de ses partenaires</label>
+                    </div>
+                    <input type="submit" value="VALIDER" id="hbutton">
                 </div>
             </form>
         </div>
     </div>
 </header>
+
 <div class="contenu">
     <h2>Faites des économies sur vos factures d’énergie !</h2>
     <div class="under-containt">
@@ -210,6 +233,7 @@ $email = $_POST['email'] ?? "";
             </p>
         </div>
     </div>
+
     <div class="under-containt">
         <div class="txt-prime">
             <h3>BÉNÉFICIEZ DE LA PRIME C.E.E</h3>
@@ -227,9 +251,11 @@ $email = $_POST['email'] ?? "";
         <a href="#form"><button>VÉRIFIER MON ÉLIGIBILITÉ</button></a>
     </div>
 </div>
+
 <div class="bandeau">
     <h2>TOUT SAVOIR SUR LES POÊLES À GRANULÉS</h2>
 </div>
+
 <div class="contenu" id="contenu2">
     <div class="under-containt">
         <img src="img/people-use-bio-coal.png" alt="illustration de panneaux solaires" id="illustration">
@@ -254,6 +280,7 @@ $email = $_POST['email'] ?? "";
         </div>
     </div>
 </div>
+
 <div class="bandeau">
     <h2>DISPOSITIF DE L’ÉTAT</h2>
     <div id="logo">
@@ -266,10 +293,12 @@ $email = $_POST['email'] ?? "";
         <a href="#form"><button id="no-shadow">CALCULER MES AIDES</button></a>
     </div>
 </div>
+
 <footer>
     <p>
         ©2023 Tous droits réservés.| EcoConfortSolutions.com
     </p>
 </footer>
+
 </body>
 </html>
