@@ -31,7 +31,7 @@ h3 {
 
 /*HEADER*/
 header {
-    background-image: url("/img/header_background_window.png");
+    background-image: url("/window/img/header_background_window.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
